@@ -16,5 +16,26 @@ namespace swift_foot
         {
             InitializeComponent();
         }
+
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!this.IsHandleCreated)
+            {
+                value = false;
+                CreateHandle();
+            }
+            base.SetVisibleCore(value);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Dispose();
+            this.Close();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }
